@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIYI LI | Portfolio</title>
+    
+    <!-- 引入高级感字体：Inter (无衬线) & EB Garamond (衬线) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
-        /* 艺术极简风格 CSS */
+        /* 艺术极简风格 CSS - 优化整合版 */
         :root {
-            --bg-color: #ffffff;
-            --text-main: #1a1a1a;
-            --text-muted: #666666;
-            --divider: #eeeeee;
+            --bg-color: #FCFCFD;
+            --text-main: #1D1D1F;
+            --text-muted: #737373;
+            --divider: #E5E5E5;
+            --accent-hover: #000000;
         }
 
         html {
@@ -18,139 +25,150 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
             color: var(--text-main);
             background-color: var(--bg-color);
-            line-height: 1.7;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* 衬线体用于标题，增加艺术感 */
         h1, h2, h3, h4, .serif {
-            font-family: "Georgia", "Times New Roman", serif;
-            font-weight: normal;
+            font-family: 'EB Garamond', "Georgia", serif;
+            font-weight: 400;
         }
 
-        /* 顶部导航栏 */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
+            background: rgba(252, 252, 253, 0.85);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--divider);
             z-index: 100;
             display: flex;
             justify-content: space-between;
-            padding: 1.5rem 5%;
+            align-items: center;
+            padding: 1.2rem 5%;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         .nav-logo {
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+            font-size: 1.3rem;
+            letter-spacing: 0.05em;
             text-decoration: none;
             color: var(--text-main);
         }
 
         .nav-links a {
-            margin-left: 2rem;
+            margin-left: 2.5rem;
             text-decoration: none;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
-            color: var(--text-main);
+            color: var(--accent-hover);
         }
 
-        /* 页面主体约束 */
         main {
             max-width: 800px;
-            margin: 8rem auto 4rem;
+            margin: 10rem auto 5rem;
             padding: 0 2rem;
         }
 
         section {
-            margin-bottom: 6rem;
-            padding-top: 4rem; 
+            margin-bottom: 8rem;
+            padding-top: 2rem; 
         }
 
         h2.section-title {
-            font-size: 2rem;
-            margin-bottom: 4rem;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
             color: var(--text-main);
             border-bottom: 1px solid var(--text-main);
             display: inline-block;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
+            letter-spacing: 0.02em;
         }
 
-        /* About 样式 */
         .statement {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            line-height: 1.6;
         }
 
-        /* =========================================
-           Work 折叠式 (Accordion) 样式核心
-           ========================================= */
         details.work-accordion {
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
             border-bottom: 1px solid var(--divider);
-            padding-bottom: 3rem;
+            padding-bottom: 2.5rem;
+            transition: all 0.3s ease;
         }
 
         details.work-accordion > summary {
-            list-style: none; /* 隐藏默认三角标记 */
+            list-style: none;
             cursor: pointer;
             outline: none;
         }
 
-        /* 适配 Safari 的隐藏默认三角 */
         details.work-accordion > summary::-webkit-details-marker {
             display: none; 
         }
 
-        /* 表面可见区域：标题与信息 */
         .work-meta-accordion {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .work-meta-accordion h3 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        details.work-accordion > summary:hover .work-meta-accordion h3 {
+            color: var(--text-muted);
         }
 
         .work-meta-accordion span {
             color: var(--text-muted);
             font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.05em;
         }
 
         .short-desc {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
-        /* 展开/收起按钮的动态文字反馈 */
         .expand-btn {
-            font-family: monospace;
-            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
             color: var(--text-main);
-            letter-spacing: 1px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
             display: inline-block;
             border-bottom: 1px solid var(--text-main);
             padding-bottom: 0.2rem;
-            margin-top: 1rem;
-            transition: color 0.3s;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
         }
 
         details.work-accordion > summary:hover .expand-btn {
@@ -158,34 +176,27 @@
             border-bottom-color: var(--text-muted);
         }
 
-        details[open] .expand-btn::after {
-            content: " - CLOSE PROJECT";
-        }
+        details[open] .expand-btn::after { content: "CLOSE PROJECT"; }
+        details:not([open]) .expand-btn::after { content: "READ MORE"; }
 
-        details:not([open]) .expand-btn::after {
-            content: " + READ MORE";
-        }
-
-        /* 下拉展示的详细内容区 */
         .work-details-content {
             margin-top: 3rem;
             padding-top: 3rem;
-            border-top: 1px dashed var(--divider);
-            animation: fadeIn 0.4s ease-in-out;
+            border-top: 1px solid var(--divider);
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
+            from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 项目详情内部的排版 */
         .project-info {
             font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--divider);
+            margin-bottom: 3rem;
+            padding-left: 1.5rem;
+            border-left: 1px solid var(--divider);
         }
 
         .project-info ul {
@@ -195,115 +206,141 @@
         }
 
         .project-info li {
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+        }
+        
+        .project-info li strong {
+            min-width: 90px;
+            font-weight: 500;
+            color: var(--text-main);
         }
 
-        .project-text {
-            margin-bottom: 3rem;
-        }
+        .project-text { margin-bottom: 4rem; }
 
         .project-text h4 {
-            font-size: 1.2rem;
-            margin-top: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
             color: var(--text-main);
+            letter-spacing: 0.03em;
         }
 
         .project-text p {
             margin-top: 0;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
         }
 
-        /* 媒体资源样式 */
         .media-full, .cover-image {
             width: 100%;
             height: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             display: block;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .media-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .media-grid img {
             width: 100%;
             height: auto;
             display: block;
+            border-radius: 2px;
+            transition: transform 0.5s ease;
+        }
+
+        .media-grid img:hover {
+            transform: scale(1.02);
         }
 
         video {
             width: 100%;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             outline: none;
             border: 1px solid var(--divider);
+            border-radius: 2px;
         }
 
         figcaption {
             font-size: 0.85rem;
             color: var(--text-muted);
             text-align: center;
-            margin-top: 0.5rem;
-            margin-bottom: 2rem;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+            font-style: italic;
         }
         
         figure { margin: 0; padding: 0; }
 
-        .work-image-placeholder {
-            width: 100%;
-            height: 350px;
-            background-color: #f9f9f9;
-            border: 1px solid var(--divider);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-        }
-
-        /* Paper & CV 样式 */
         .paper-item {
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--divider);
+            margin-bottom: 3rem;
+            padding-left: 1.5rem;
+            border-left: 1px solid var(--text-main); 
         }
 
-        .paper-item p { margin: 0.3rem 0; }
-        .paper-title { font-weight: 600; }
+        .paper-item p { margin: 0.5rem 0; }
+        .paper-title { font-weight: 500; font-size: 1.1rem; color: var(--text-main); }
 
         .cv-grid {
             display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: 110px 1fr;
+            gap: 1.5rem;
+            margin-bottom: 0.8rem;
+            align-items: baseline;
         }
 
         .cv-year {
             color: var(--text-muted);
-            font-family: monospace;
+            font-family: 'Inter', monospace;
             font-size: 0.95rem;
+            font-weight: 300;
         }
 
-        .cv-details { margin: 0; }
+        .cv-details { 
+            margin: 0; 
+            line-height: 1.5;
+        }
+        
+        .cv-details p { 
+            margin: 0.2rem 0;
+        }
+
+        h3.cv-subtitle {
+            font-size: 1.35rem;
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+            color: var(--text-main);
+        }
 
         a.contact-link, a.normal-link {
             color: var(--text-main);
-            text-decoration: underline;
-            text-underline-offset: 4px;
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-muted);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
         }
 
-        /* 响应式 */
+        a.contact-link:hover, a.normal-link:hover {
+            color: var(--accent-hover);
+            border-bottom-color: var(--accent-hover);
+        }
+
         @media (max-width: 600px) {
-            nav { flex-direction: column; text-align: center; padding: 1rem; }
-            .nav-links { margin-top: 1rem; }
-            .nav-links a { margin: 0 0.8rem; }
-            .cv-grid { grid-template-columns: 1fr; gap: 0.2rem; }
+            nav { padding: 1rem; }
+            .nav-logo { font-size: 1.1rem; }
+            .nav-links a { margin-left: 1rem; font-size: 0.75rem; }
+            main { margin-top: 7rem; padding: 0 1.5rem; }
+            .cv-grid { grid-template-columns: 1fr; gap: 0.2rem; margin-bottom: 1.2rem; }
             .cv-year { margin-bottom: 0.2rem; }
-            .media-grid { grid-template-columns: 1fr; }
-            .work-meta-accordion { flex-direction: column; }
+            .media-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .work-meta-accordion { flex-direction: column; align-items: flex-start; }
             .work-meta-accordion span { margin-top: 0.5rem; }
         }
     </style>
@@ -314,8 +351,8 @@
         <a href="#" class="nav-logo serif">ZIYI LI</a>
         <div class="nav-links">
             <a href="#about">About</a>
-            <a href="#work">Work</a>
             <a href="#paper">Paper</a>
+            <a href="#work">Work</a>
             <a href="#cv">CV</a>
         </div>
     </nav>
@@ -328,120 +365,13 @@
                 "Investigating the relationship between materiality and cognition: how material and technical systems simultaneously reveal and conceal the conditions and limits of human understanding."
             </p>
             <p>
-                My practice bridges digital media, philosophy of technology, and fine art. I am specifically interested in embodied cognition, cultural techniques, human-machine relations, and the critical examination of artificial intelligence through the lens of material feedback and sensory reorganization. Based in Bremen, Germany.
+                Hi, I'm Ziyi. 
+                <p>My practice bridges digital media, philosophy of technology, and fine art. I am specifically interested in embodied cognition, cultural techniques, human-machine relations, and the critical examination of artificial intelligence through the lens of material feedback and sensory reorganization. 
+            </p><p>Based in Bremen, Germany.</p>
             </p>
             <p>
-                Contact: <a href="mailto:gkjhhc5@gmail.com" class="contact-link">ziyi.li.research@gmail.com</a>
+                Contact: <a href="mailto:ziyi.li.research@gmail.com" class="contact-link">ziyi.li.research@gmail.com</a>
             </p>
-        </section>
-
-        <!-- WORK -->
-        <section id="work">
-            <h2 class="section-title">Selected Work</h2>
-
-            <!-- ==============================================
-                 项目 01：Vocal Tectonics (下拉折叠式)
-                 ============================================== -->
-            <details class="work-accordion">
-                <!-- 表面可见层 -->
-                <summary>
-                    <div class="work-meta-accordion">
-                        <h3>Vocal Tectonics</h3>
-                        <span>2025 / Physical Installation</span>
-                    </div>
-                    <!-- 首图 -->
-                    <img src="select/0-1.JPG" class="cover-image" alt="Vocal Tectonics Cover">
-                    <!-- 一段文字说明 -->
-                    <p class="short-desc serif">The piece simulates the mechanisms of vocal cords and resonant cavities, making a voice the central expressive medium of the installation.</p>
-                    <div class="expand-btn"></div>
-                </summary>
-
-                <!-- 点击展开后的详细层 -->
-                <div class="work-details-content">
-                    <div class="project-info">
-                        <ul>
-                            <li><strong>Year:</strong> 2025</li>
-                            <li><strong>Location:</strong> Bremen, Germany</li>
-                            <li><strong>Size:</strong> 2x3m</li>
-                            <li><strong>Materials:</strong> porcelain, soap, raspberry pi, silicone, plastic film, rubber tube, magic arm, platform, metal pipes, mounting brackets, needle, air pump</li>
-                        </ul>
-                    </div>
-
-                    <div class="project-text">
-                        <h4>Overview</h4>
-                        <p>This work consists of hollow sculptures made from porcelain and soap, integrated with a custom-built, deformable silicone structure. Guided by an air pump, controlled airflow is introduced to reconstruct a humanoid vocal tract and produce a voice.</p>
-
-                        <h4>Concept</h4>
-                        <p>Taking humanoid voice as its starting point, the work treats a voice itself as a medium to explore how it functions as a "converter" between consciousness/concept and material form. On the one hand, a voice---being immaterial---translates thought into perceptible existence; on the other, it also reveals how material form is shaped by concepts and perception. The work poses a key question: can the boundary between consciousness and matter be disrupted by the mediating presence of a voice? In doing so, it presents a dynamic interplay of internal and external, abstract and concrete, mind and matter---within a single constructed entity.</p>
-
-                        <h4>Methodology</h4>
-                        <p>This constructivist experimental installation unfolds in a state of "ongoing generation," emphasizing its open-ended, non-finite nature. It echoes the idea of the "Material-Discursive Apparatus," revealing how binary structures continuously interact and redefine each other in process.</p>
-
-                        <h4>Technical Details</h4>
-                        <p>Visually, the work draws upon references such as 3D modeling, medical imaging, and anatomical diagrams to approximate the spatial volume of the human oral and nasal cavities, thereby constructing a humanoid acoustic resonance chamber. The silicone structure is connected to the air pump; through tubes, micro-controlled airflow is introduced to generate different vocalizations, simulating the vibration mechanism of vocal cords.</p>
-
-                        <h4>Implications and Questions</h4>
-                        <p>Further lines of inquiry include: can humanoid voice serve as a key factor in constructing the subjectivity of artificial intelligence? Does future intelligence necessarily require a voice---or similar technological forms---as a medium to develop independent consciousness structures? If a voice is understood as an immaterial yet perceivable phenomenon, does it also point to the complex and fluid relationship between body and consciousness?</p>
-
-                        <h4>Conclusion</h4>
-                        <p>This work is not only a simulation and reconstruction of the vocal mechanism, but also a reflection on how "intelligence" might be embodied, formed, and perceived---whether within the human body or in non-human systems.</p>
-                    </div>
-
-                    <!-- 组图排版 -->
-                    <div class="media-grid">
-                        <img src="select/1-1.JPG" alt="Vocal Tectonics Detail 1">
-                        <img src="select/1-2.JPG" alt="Vocal Tectonics Detail 2">
-                        <img src="select/2-1.JPG" alt="Vocal Tectonics Detail 3">
-                        <img src="select/2-2.JPG" alt="Vocal Tectonics Detail 4">
-                    </div>
-
-                    <!-- 视频 -->
-                    <video controls>
-                        <source src="select/5.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-
-                </div>
-            </details>
-
-            <!-- ==============================================
-                 项目 02：Initial Voice (下拉折叠式，预留网页内容)
-                 ============================================== -->
-            <details class="work-accordion">
-                <!-- 表面可见层 -->
-                <summary>
-                    <div class="work-meta-accordion">
-                        <h3>Initial Voice</h3>
-                        <span>2024 / Material Exploration</span>
-                    </div>
-                    <!-- 首图占位，请替换为网页中的首图路径 -->
-                    <img src="select/iv-01.jpg" class="cover-image" alt="Initial Voice Cover">
-                    <!-- 一段文字说明 -->
-                    <p class="short-desc serif">An exploration of vocalization as a material process, reconstructing the resonant cavities of the human body in porcelain and silicone to examine voice as a bridge between matter, identity, and consciousness.</p>
-                    <div class="expand-btn"></div>
-                </summary>
-
-                <!-- 点击展开后的详细层 -->
-                <div class="work-details-content">
-                    <div class="project-info">
-                        <ul>
-                            <li><strong>Year:</strong> 2024</li>
-                            <li><strong>Project Link:</strong> <a href="https://digitalmedia-bremen.de/project/initial-voice/" target="_blank" class="normal-link">digitalmedia-bremen.de/project/initial-voice/</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="project-text">
-                        <h4>Concept</h4>
-                        <!-- 这里可以直接将你网页上的介绍文案粘贴在此处 -->
-                        <p>This work investigates the origins of the human voice, weaving together practical dimensions from biology and engineering with the aesthetic and functional complexities that voice embodies. It examines how voice shapes human development, how it may be rendered into tangible, material form, and how it interfaces with the physical world through various mediums. The study further engages with autonomous speech generation in artificial intelligence, drawing meaningful parallels with language acquisition models and the lived experiences of individuals with dysarthria, while situating the voice within broader discourses of race, identity, and culture.</p>
-                        <p>Methodologically, the work employs traditional ceramic modeling techniques to cast hollow porcelain structures that replicate the resonant cavities of the human body — the mouth, the throat — the very architecture through which sound takes shape. By driving airflow through an air pump, and manipulating that flow across a series of deformable silicone air sacs in concert with auxiliary objects, the work gives rise to sound through purely material and mechanical means.</p>
-                        <p>At its philosophical core, this study probes the potential of voice as a threshold between the material and the metaphysical — a medium that is at once bodily and transcendent. It culminates in a speculative proposition: that artificial intelligence may one day attain a form of genuine, autonomous consciousness analogous to the human condition, contingent upon its capacity to develop a voice truly its own.</p>
-                    </div>
-
-                </div>
-            </details>
-        
-
         </section>
 
         <!-- PAPER -->
@@ -449,93 +379,183 @@
             <h2 class="section-title">Research & Papers</h2>
 
             <div class="paper-item">
-                <p class="paper-title">Vocal Organ: Apparatus for Generating Voice and Images</p>
+                <p class="paper-title serif">Vocal Organ: Apparatus for Generating Voice and Images</p>
                 <p><strong>Master Thesis, Digital Media</strong> | <em>Hochschule für Künste Bremen, 2026</em></p>
-                <p style="font-size: 0.9rem; color: var(--text-muted);"><strong>Advisors:</strong> Prof. Dr. Andrea Sick, Prof. Ralf Baecker, Prof. Natascha Sadr Haghighian</p>
-                <p>A 60-page interdisciplinary thesis investigating how the material act of phonation relates to the emergence of intelligence. Traces the progressive stripping of voice's material conditions through writing, phonography, and AI-generated speech. Proposes "The Room without Echo" as a material-acoustic critique of the Chinese Room thought experiment. Engages with cybernetics, embodied cognition, and philosophy of mind.</p>
-                <p style="margin-top: 0.5rem;">
-                <a href="papers/VocalOrgan_ApparatusForGeneratingVoiceAndImages_ZiyiLi.pdf" target="_blank" class="contact-link" style="font-size: 0.9rem;">[ View / Download PDF ]</a></p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6;">
+                    <strong>Advisors:</strong> Prof. Dr. Andrea Sick, Prof. Ralf Baecker, Prof. Natascha Sadr Haghighian<br>
+                    <strong>DOI:</strong> <a href="https://doi.org/10.31235/osf.io/ywdct_v1" class="normal-link" target="_blank">10.31235/osf.io/ywdct_v1</a>
+                </p>
+                <p style="color: var(--text-muted);">A 60-page interdisciplinary thesis investigating how the material act of phonation relates to the emergence of intelligence. Traces the progressive stripping of voice's material conditions through writing, phonography, and AI-generated speech. Proposes "The Room without Echo" as a material-acoustic critique of the Chinese Room thought experiment. Engages with cybernetics, embodied cognition, and philosophy of mind.</p>
+                <p style="margin-top: 1rem;">
+                <a href="papers/VocalOrgan_ApparatusForGeneratingVoiceAndImages_ZiyiLi.pdf" target="_blank" class="contact-link" style="font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;">VIEW / DOWNLOAD PDF</a></p>
             </div>
+        </section>
 
+        <!-- WORK -->
+        <section id="work">
+            <h2 class="section-title">Selected Work</h2>
+
+            <details class="work-accordion">
+                <summary>
+                    <div class="work-meta-accordion">
+                        <h3 class="serif">Vocal Tectonics</h3>
+                        <span>2025 / Physical Installation</span>
+                    </div>
+                    <img src="select/0-1.JPG" class="cover-image" alt="Vocal Tectonics Cover">
+                    <p class="short-desc serif">The piece simulates the mechanisms of vocal cords and resonant cavities, making a voice the central expressive medium of the installation.</p>
+                    <div class="expand-btn"></div>
+                </summary>
+
+                <div class="work-details-content">
+                    <div class="project-info">
+                        <ul>
+                            <li><strong>Year</strong> 2025</li>
+                            <li><strong>Location</strong> Bremen, Germany</li>
+                            <li><strong>Size</strong> 2x3m</li>
+                            <li><strong>Materials</strong> porcelain, soap, raspberry pi, silicone, plastic film, rubber tube, magic arm, platform, metal pipes, mounting brackets, needle, air pump</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-text">
+                        <h4 class="serif">Overview</h4>
+                        <p>This work consists of hollow sculptures made from porcelain and soap, integrated with a custom-built, deformable silicone structure. Guided by an air pump, controlled airflow is introduced to reconstruct a humanoid vocal tract and produce a voice.</p>
+
+                        <h4 class="serif">Concept</h4>
+                        <p>Taking humanoid voice as its starting point, the work treats a voice itself as a medium to explore how it functions as a "converter" between consciousness/concept and material form. On the one hand, a voice---being immaterial---translates thought into perceptible existence; on the other, it also reveals how material form is shaped by concepts and perception. The work poses a key question: can the boundary between consciousness and matter be disrupted by the mediating presence of a voice? In doing so, it presents a dynamic interplay of internal and external, abstract and concrete, mind and matter---within a single constructed entity.</p>
+
+                        <h4 class="serif">Methodology</h4>
+                        <p>This constructivist experimental installation unfolds in a state of "ongoing generation," emphasizing its open-ended, non-finite nature. It echoes the idea of the "Material-Discursive Apparatus," revealing how binary structures continuously interact and redefine each other in process.</p>
+
+                        <h4 class="serif">Technical Details</h4>
+                        <p>Visually, the work draws upon references such as 3D modeling, medical imaging, and anatomical diagrams to approximate the spatial volume of the human oral and nasal cavities, thereby constructing a humanoid acoustic resonance chamber. The silicone structure is connected to the air pump; through tubes, micro-controlled airflow is introduced to generate different vocalizations, simulating the vibration mechanism of vocal cords.</p>
+
+                        <h4 class="serif">Implications and Questions</h4>
+                        <p>Further lines of inquiry include: can humanoid voice serve as a key factor in constructing the subjectivity of artificial intelligence? Does future intelligence necessarily require a voice---or similar technological forms---as a medium to develop independent consciousness structures? If a voice is understood as an immaterial yet perceivable phenomenon, does it also point to the complex and fluid relationship between body and consciousness?</p>
+
+                        <h4 class="serif">Conclusion</h4>
+                        <p>This work is not only a simulation and reconstruction of the vocal mechanism, but also a reflection on how "intelligence" might be embodied, formed, and perceived---whether within the human body or in non-human systems.</p>
+                    </div>
+
+                    <div class="media-grid">
+                        <img src="select/1-1.JPG" alt="Vocal Tectonics Detail 1">
+                        <img src="select/1-2.JPG" alt="Vocal Tectonics Detail 2">
+                        <img src="select/2-1.JPG" alt="Vocal Tectonics Detail 3">
+                        <img src="select/2-2.JPG" alt="Vocal Tectonics Detail 4">
+                    </div>
+
+                    <video controls>
+                        <source src="select/5.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </details>
+
+            <details class="work-accordion">
+                <summary>
+                    <div class="work-meta-accordion">
+                        <h3 class="serif">Initial Voice</h3>
+                        <span>2024 / Material Exploration</span>
+                    </div>
+                    <img src="select/iv-01.jpg" class="cover-image" alt="Initial Voice Cover">
+                    <p class="short-desc serif">An exploration of vocalization as a material process, reconstructing the resonant cavities of the human body in porcelain and silicone to examine voice as a bridge between matter, identity, and consciousness.</p>
+                    <div class="expand-btn"></div>
+                </summary>
+
+                <div class="work-details-content">
+                    <div class="project-info">
+                        <ul>
+                            <li><strong>Year</strong> 2024</li>
+                            <li><strong>Project Link</strong> <a href="https://digitalmedia-bremen.de/project/initial-voice/" target="_blank" class="normal-link">digitalmedia-bremen.de/project/initial-voice/</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="project-text">
+                        <h4 class="serif">Concept</h4>
+                        <p>This work investigates the origins of the human voice, weaving together practical dimensions from biology and engineering with the aesthetic and functional complexities that voice embodies. It examines how voice shapes human development, how it may be rendered into tangible, material form, and how it interfaces with the physical world through various mediums. The study further engages with autonomous speech generation in artificial intelligence, drawing meaningful parallels with language acquisition models and the lived experiences of individuals with dysarthria, while situating the voice within broader discourses of race, identity, and culture.</p>
+                        <p>Methodologically, the work employs traditional ceramic modeling techniques to cast hollow porcelain structures that replicate the resonant cavities of the human body — the mouth, the throat — the very architecture through which sound takes shape. By driving airflow through an air pump, and manipulating that flow across a series of deformable silicone air sacs in concert with auxiliary objects, the work gives rise to sound through purely material and mechanical means.</p>
+                        <p>At its philosophical core, this study probes the potential of voice as a threshold between the material and the metaphysical — a medium that is at once bodily and transcendent. It culminates in a speculative proposition: that artificial intelligence may one day attain a form of genuine, autonomous consciousness analogous to the human condition, contingent upon its capacity to develop a voice truly its own.</p>
+                    </div>
+                </div>
+            </details>
         </section>
 
         <!-- CV -->
         <section id="cv">
             <h2 class="section-title">Curriculum Vitae</h2>
 
-            <h3 class="serif" style="margin-top: 2rem;">Education</h3>
+            <h3 class="serif cv-subtitle">Education</h3>
             <div class="cv-grid">
                 <div class="cv-year">2023 - 2026</div>
                 <div class="cv-details">
                     <strong>Master of Arts, Digital Media</strong><br>
-                    Hochschule für Künste Bremen, Germany
+                    <span style="color: var(--text-muted);">Hochschule für Künste Bremen, Germany</span>
                 </div>
             </div>
             <div class="cv-grid">
                 <div class="cv-year">2020 - 2023</div>
                 <div class="cv-details">
                     <strong>Vordiplom, Freie Kunst (Fine Art)</strong><br>
-                    Hochschule für Künste Bremen, Germany
+                    <span style="color: var(--text-muted);">Hochschule für Künste Bremen, Germany</span>
                 </div>
             </div>
             <div class="cv-grid">
                 <div class="cv-year">2015 - 2019</div>
                 <div class="cv-details">
                     <strong>Bachelor of Arts, Painting</strong><br>
-                    Luxun Academy of Fine Arts, Shenyang, China
+                    <span style="color: var(--text-muted);">Luxun Academy of Fine Arts, Shenyang, China</span>
                 </div>
             </div>
 
-            <h3 class="serif" style="margin-top: 3rem;">Honors & Awards</h3>
+            <h3 class="serif cv-subtitle">Honors & Awards</h3>
             <div class="cv-grid">
                 <div class="cv-year">2025</div>
                 <div class="cv-details">
                     <strong>DAAD Prize for Outstanding Achievements</strong><br>
-                    Awarded by DAAD and HfK Bremen
+                    <span style="color: var(--text-muted);">Awarded by DAAD and HfK Bremen</span>
                 </div>
             </div>
 
-            <h3 class="serif" style="margin-top: 3rem;">Exhibitions</h3>
+            <h3 class="serif cv-subtitle">Exhibitions</h3>
             <div class="cv-grid">
                 <div class="cv-year">2026</div>
                 <div class="cv-details">
-                    <p><strong>Vocal Organ</strong> (Solo) - Hochschule für Künste Bremen, Germany</p>
+                    <p><strong>Vocal Organ</strong> (Solo) - <span style="color: var(--text-muted);">Hochschule für Künste Bremen, Germany</span></p>
                 </div>
             </div>
             <div class="cv-grid">
                 <div class="cv-year">2025</div>
                 <div class="cv-details">
-                    <p><strong>I Hope This Finds You Well</strong> (Group) - Hochschule für Künste Bremen, Germany</p>
-                    <p><strong>Habla con la papa en la boca</strong> (Project) - After the Butcher, Berlin, Germany</p>
-                    <p><strong>goarwywaswyt</strong> (Project) - Hochschuletage, HfK Bremen, Germany</p>
+                    <p><strong>I Hope This Finds You Well</strong> (Group) - <span style="color: var(--text-muted);">Hochschule für Künste Bremen, Germany</span></p>
+                    <p><strong>Habla con la papa en la boca</strong> (Project) - <span style="color: var(--text-muted);">After the Butcher, Berlin, Germany</span></p>
+                    <p><strong>goarwywaswyt</strong> (Project) - <span style="color: var(--text-muted);">Hochschuletage, HfK Bremen, Germany</span></p>
                 </div>
             </div>
             <div class="cv-grid">
                 <div class="cv-year">2024</div>
                 <div class="cv-details">
-                    <p><strong>Studies of Change</strong> (Group) - Alte Pathologie, Bremen, Germany</p>
+                    <p><strong>Studies of Change</strong> (Group) - <span style="color: var(--text-muted);">Alte Pathologie, Bremen, Germany</span></p>
                 </div>
             </div>
             <div class="cv-grid">
                 <div class="cv-year">2022</div>
                 <div class="cv-details">
-                    <p><strong>Humanoid Vocal Simulator</strong> (Solo) - Hochschule für Künste Bremen, Germany</p>
-                    <p><strong>LACUNA: Inside of a Dumpling</strong> (Project) - Hochschuletage, HfK Bremen, Germany</p>
-                    <p><strong>Walking Towards a Garden</strong> (Project) - Hochschuletage, HfK Bremen, Germany</p>
+                    <p><strong>Humanoid Vocal Simulator</strong> (Solo) - <span style="color: var(--text-muted);">Hochschule für Künste Bremen, Germany</span></p>
+                    <p><strong>LACUNA: Inside of a Dumpling</strong> (Project) - <span style="color: var(--text-muted);">Hochschuletage, HfK Bremen, Germany</span></p>
+                    <p><strong>Walking Towards a Garden</strong> (Project) - <span style="color: var(--text-muted);">Hochschuletage, HfK Bremen, Germany</span></p>
                 </div>
             </div>
             <div class="cv-grid">
                 <div class="cv-year">2021</div>
                 <div class="cv-details">
-                    <p><strong>Our Porous Limits</strong> (Group) - SPEDITION Kunst- & Kulturverein, Bremen, Germany</p>
-                    <p><strong>OUT/SYNC</strong> (Group) - Galerie HBKSAAR, Saarbrücken, Germany</p>
-                    <p><strong>When to Move in Disorientation</strong> (Project) - Open Space Domshof, Bremen, Germany</p>
+                    <p><strong>Our Porous Limits</strong> (Group) - <span style="color: var(--text-muted);">SPEDITION Kunst- & Kulturverein, Bremen, Germany</span></p>
+                    <p><strong>OUT/SYNC</strong> (Group) - <span style="color: var(--text-muted);">Galerie HBKSAAR, Saarbrücken, Germany</span></p>
+                    <p><strong>When to Move in Disorientation</strong> (Project) - <span style="color: var(--text-muted);">Open Space Domshof, Bremen, Germany</span></p>
                 </div>
             </div>
             <div class="cv-grid">
                 <div class="cv-year">2020</div>
                 <div class="cv-details">
-                    <p><strong>Shape Shifting – Sightings</strong> (Project) - Circa106, Bremen, Germany</p>
+                    <p><strong>Shape Shifting – Sightings</strong> (Project) - <span style="color: var(--text-muted);">Circa106, Bremen, Germany</span></p>
                 </div>
             </div>
         </section>
